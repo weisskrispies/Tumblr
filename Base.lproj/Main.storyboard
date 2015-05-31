@@ -98,12 +98,26 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="TgY-bT-c2S">
+                                <rect key="frame" x="0.0" y="567" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Nevermind">
+                                    <color key="titleColor" red="0.64936447369999994" green="0.70032962259999998" blue="0.76559088119999996" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onDismissButtonTap:" destination="0ZU-Vu-HbX" eventType="touchUpInside" id="pjz-hi-atq"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.18892691951048943" green="0.27394908745037883" blue="0.35585073577730242" alpha="0.90000000000000002" colorSpace="calibratedRGB"/>
                     </view>
                     <connections>
                         <outlet property="chatButton" destination="znF-tb-fKv" id="TCg-KA-LUB"/>
                         <outlet property="linkButton" destination="w6A-2j-zSe" id="lDm-fM-Aew"/>
+                        <outlet property="modalBackground" destination="tAQ-Q7-IJ6" id="fCY-8O-2Dl"/>
+                        <outlet property="nevermindButton" destination="TgY-bT-c2S" id="4XR-ig-DjJ"/>
                         <outlet property="photoButton" destination="kZt-sT-L2o" id="YoC-8x-dea"/>
                         <outlet property="quoteButton" destination="6Hq-kK-jYx" id="I8U-ns-rdO"/>
                         <outlet property="textButton" destination="Ek9-Ql-YSo" id="gKa-Gb-4lL"/>
@@ -205,8 +219,7 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="onComposeButtonTap:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="oRK-JZ-I91"/>
-                                            <segue destination="0ZU-Vu-HbX" kind="modal" identifier="composeViewSegue" modalTransitionStyle="crossDissolve" id="xCE-QE-AXw"/>
+                                            <segue destination="0ZU-Vu-HbX" kind="modal" identifier="composeSegue" id="hEI-c2-uwN"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="K4q-qS-kn5" userLabel="Account Button">
@@ -239,20 +252,6 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="rEr-YC-FxM">
-                                <rect key="frame" x="0.0" y="524" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.18892691950000001" green="0.27394908750000002" blue="0.35585073579999998" alpha="0.90000000000000002" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <state key="normal" title="Nevermind">
-                                    <color key="titleColor" red="0.64936447369999994" green="0.70032962259999998" blue="0.76559088119999996" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="onDismissButtonTap:" destination="0ZU-Vu-HbX" eventType="touchUpInside" id="r4W-rV-4hO"/>
-                                    <action selector="onDismissCompose:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="bBQ-gq-brt"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.4431372549" green="0.47450980390000003" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
@@ -260,7 +259,6 @@
                         <outlet property="accountButton" destination="K4q-qS-kn5" id="Ja5-H9-qPm"/>
                         <outlet property="composeButton" destination="yXF-Ed-oys" id="Q4W-0B-0Ko"/>
                         <outlet property="contentView" destination="gcs-yj-Ior" id="Y4X-h4-PV2"/>
-                        <outlet property="dismissButtonView" destination="rEr-YC-FxM" id="pFi-wj-bBz"/>
                         <outlet property="homeButton" destination="80n-eY-kRE" id="Hgx-VL-zxl"/>
                         <outlet property="searchButton" destination="7tv-PF-HII" id="Z4w-ig-ghA"/>
                         <outlet property="tabBarView" destination="rtD-sG-zGJ" id="oW9-Oh-loE"/>

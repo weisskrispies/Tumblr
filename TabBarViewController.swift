@@ -17,7 +17,6 @@ class TabBarViewController: UIViewController, UIViewControllerTransitioningDeleg
     @IBOutlet weak var trendingButton: UIButton!
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var tabBarView: UIView!
-    @IBOutlet weak var dismissButtonView: UIButton!
     
     var composeModalIsPresenting: Bool = true
     
@@ -28,7 +27,7 @@ class TabBarViewController: UIViewController, UIViewControllerTransitioningDeleg
     var trendingViewController: UIViewController!
     
     var showingHome: Bool!
-    
+    var currentView: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,8 +38,6 @@ class TabBarViewController: UIViewController, UIViewControllerTransitioningDeleg
         composeViewController = storyboard.instantiateViewControllerWithIdentifier("ComposeViewController") as! UIViewController
         accountViewController = storyboard.instantiateViewControllerWithIdentifier("AccountViewController") as! UIViewController
         trendingViewController = storyboard.instantiateViewControllerWithIdentifier("TrendingViewController") as! UIViewController
-
-        dismissButtonView.alpha = 0
 
         homeViewController.view.frame = contentView.bounds
         contentView.addSubview(homeViewController.view)
@@ -84,21 +81,6 @@ class TabBarViewController: UIViewController, UIViewControllerTransitioningDeleg
         searchViewController.didMoveToParentViewController(self)
     }
     
-    @IBAction func onComposeButtonTap(sender: UIButton) {
-        addChildViewController(composeViewController)
-        composeViewController.view.frame = contentView.bounds
-        contentView.addSubview(composeViewController.view)
-        
-        composeViewController.view.alpha = 0
-        UIView.animateWithDuration(0.3, animations: { () -> Void in
-            self.composeViewController.view.alpha = 1
-            self.dismissButtonView.alpha = 1
-        })
-        sender.selected = true
-        println("showing Compose")
-        
-        composeViewController.didMoveToParentViewController(self)
-    }
     
     @IBAction func onAccountButtonTap(sender: UIButton) {
         addChildViewController(accountViewController)
@@ -134,24 +116,44 @@ class TabBarViewController: UIViewController, UIViewControllerTransitioningDeleg
         destinationVC.transitioningDelegate = self
         
     }
+    
 
-    func animationControllerForPresentedController(presented: UIViewController!, presentingController presenting: UIViewController!, sourceController source: UIViewController!) -> UIViewControllerAnimatedTransitioning! {
+    func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         composeModalIsPresenting = true
+        println("presenting Compose modal")
         return self
     }
     
-    func animationControllerForDismissedController(dismissed: UIViewController!) -> UIViewControllerAnimatedTransitioning! {
+    func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         composeModalIsPresenting = false
+        println("time to dismiss modal")
         return self
-    }       
-
+    }
+    
     func transitionDuration(transitionContext: UIViewControllerContextTransitioning) -> NSTimeInterval {
         // The value here should be the duration of the animations scheduled in the animationTransition method
         return 0.4
     }
     
     func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
-        // TODO: animate the transition in Step 3 below
+        println("animating transition")
+        var containerView = transitionContext.containerView()
+        var toViewController = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey)!
+        var fromViewController = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey)!
+        
+        if (composeModalIsPresenting) {
+            containerView.addSubview(toViewController.view)
+            toViewController.view.alpha = 1
+            transitionContext.completeTransition(true)
+
+        } else {
+                fromViewController.view.alpha = 0
+                transitionContext.completeTransition(true)
+                fromViewController.view.removeFromSuperview()
+            
+        }
     }
+
     
 }
+
