@@ -14,5 +14,5 @@ Time Spent: ___ hours
 
 
 
-<img src="insert_link_here" width="300">
+<img src="https://lh3.googleusercontent.com/-gCnX-BTn-v0/VWuZmpKgx_I/AAAAAAAADWU/OEEESfrdrWY/s512/Tumblr.gif" width="300">
 
