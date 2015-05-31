@@ -147,10 +147,11 @@ class TabBarViewController: UIViewController, UIViewControllerTransitioningDeleg
             transitionContext.completeTransition(true)
 
         } else {
+        
                 fromViewController.view.alpha = 0
                 transitionContext.completeTransition(true)
                 fromViewController.view.removeFromSuperview()
-            
+
         }
     }
 
