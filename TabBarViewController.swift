@@ -17,6 +17,7 @@ class TabBarViewController: UIViewController, UIViewControllerTransitioningDeleg
     @IBOutlet weak var trendingButton: UIButton!
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var tabBarView: UIView!
+    @IBOutlet weak var exploreCalloutView: UIImageView!
     
     var composeModalIsPresenting: Bool = true
     
@@ -25,6 +26,10 @@ class TabBarViewController: UIViewController, UIViewControllerTransitioningDeleg
     var composeViewController: UIViewController!
     var accountViewController: UIViewController!
     var trendingViewController: UIViewController!
+    
+    var exploreCalloutOriginalPosition: CGPoint!
+    var exploreCalloutMovedUp: CGPoint!
+    var exploreCalloutHidden: CGPoint!
     
     var showingHome: Bool!
     var currentView: String!
@@ -39,15 +44,28 @@ class TabBarViewController: UIViewController, UIViewControllerTransitioningDeleg
         accountViewController = storyboard.instantiateViewControllerWithIdentifier("AccountViewController") as! UIViewController
         trendingViewController = storyboard.instantiateViewControllerWithIdentifier("TrendingViewController") as! UIViewController
 
+        // sets home as initially displayed view controller
         homeViewController.view.frame = contentView.bounds
         contentView.addSubview(homeViewController.view)
         homeButton.selected = true
+        
+        exploreCalloutOriginalPosition = exploreCalloutView.center
+        exploreCalloutMovedUp = CGPoint(x: exploreCalloutView.center.x, y: exploreCalloutView.center.y - 5)
+        exploreCalloutHidden = CGPoint(x: exploreCalloutView.center.x, y: exploreCalloutView.center.y + 80)
+        
+        floatingExploreCallout()
         
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func floatingExploreCallout () {
+        UIView.animateWithDuration(0.5, delay: 0, options: UIViewAnimationOptions.Repeat | UIViewAnimationOptions.Autoreverse, animations: { () -> Void in
+            self.exploreCalloutView.center = self.exploreCalloutMovedUp
+        }, completion: nil)
     }
     
     @IBAction func onHomeButtonTap(sender: UIButton) {
@@ -75,6 +93,11 @@ class TabBarViewController: UIViewController, UIViewControllerTransitioningDeleg
         homeButton.selected = false
         accountButton.selected = false
         trendingButton.selected = false
+        
+        UIView.animateWithDuration(0.3, delay: 0, options: UIViewAnimationOptions.CurveEaseOut, animations: { () -> Void in
+                self.exploreCalloutView.center = self.exploreCalloutHidden
+        }, completion: nil)
+
         
         println("showing Search")
         

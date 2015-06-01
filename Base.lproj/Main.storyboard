@@ -16,6 +16,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="524"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </imageView>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="home_spinner" id="oYX-xo-Sr0">
+                                <rect key="frame" x="87" y="160" width="146" height="146"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </imageView>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="home_overlay" id="Wtz-5O-igz">
                                 <rect key="frame" x="0.0" y="261" width="320" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
@@ -23,6 +27,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="loadingSpinner" destination="oYX-xo-Sr0" id="pqX-e6-Cgp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ynu-Wp-AzS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -157,15 +164,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="foh-c9-8Lw">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="524"/>
+                                <rect key="frame" x="0.0" y="60" width="320" height="464"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="trending_feed" id="oNY-a5-iQI">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="1217"/>
+                                        <rect key="frame" x="0.0" y="-60" width="320" height="1217"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                     </imageView>
                                 </subviews>
                             </scrollView>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="Trending_Header" id="Nxk-QK-3dq">
+                                <rect key="frame" x="0.0" y="-8" width="320" height="69"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.18892691950000001" green="0.27394908750000002" blue="0.35585073579999998" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
@@ -186,6 +197,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" id="gcs-yj-Ior" userLabel="Content View">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="524"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="explore_popup" id="LCB-2a-eMG">
+                                <rect key="frame" x="1" y="452" width="185" height="77"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </imageView>
                             <view contentMode="scaleToFill" id="rtD-sG-zGJ" userLabel="Tab Bar View">
                                 <rect key="frame" x="0.0" y="524" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -247,11 +267,6 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.18892691951048943" green="0.27394908745037883" blue="0.35585073577730242" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
-                            <view contentMode="scaleToFill" id="gcs-yj-Ior" userLabel="Content View">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="524"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.4431372549" green="0.47450980390000003" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
@@ -259,6 +274,7 @@
                         <outlet property="accountButton" destination="K4q-qS-kn5" id="Ja5-H9-qPm"/>
                         <outlet property="composeButton" destination="yXF-Ed-oys" id="Q4W-0B-0Ko"/>
                         <outlet property="contentView" destination="gcs-yj-Ior" id="Y4X-h4-PV2"/>
+                        <outlet property="exploreCalloutView" destination="LCB-2a-eMG" id="wDr-Lq-vyt"/>
                         <outlet property="homeButton" destination="80n-eY-kRE" id="Hgx-VL-zxl"/>
                         <outlet property="searchButton" destination="7tv-PF-HII" id="Z4w-ig-ghA"/>
                         <outlet property="tabBarView" destination="rtD-sG-zGJ" id="oW9-Oh-loE"/>
@@ -271,15 +287,18 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Trending_Header" width="320" height="69"/>
         <image name="account" width="320" height="524"/>
         <image name="account_icon" width="35" height="35"/>
         <image name="account_selected_icon" width="35" height="35"/>
         <image name="chat_icon" width="75" height="96"/>
         <image name="compose_button" width="50" height="35"/>
+        <image name="explore_popup" width="185" height="77"/>
         <image name="home" width="320" height="524"/>
         <image name="home_icon" width="35" height="35"/>
         <image name="home_overlay" width="320" height="100"/>
         <image name="home_selected_icon" width="35" height="35"/>
+        <image name="home_spinner" width="146" height="146"/>
         <image name="link_icon" width="75" height="95"/>
         <image name="photo_icon" width="75" height="95"/>
         <image name="quote_icon" width="75" height="96"/>
