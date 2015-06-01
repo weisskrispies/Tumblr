@@ -1,7 +1,7 @@
 # Tumblr
 CodePath Week 4 Assignment
 
-Time Spent: ___ hours
+Time Spent: 9 hours
 
 ## Stories Completed
 
@@ -10,9 +10,10 @@ Time Spent: ___ hours
 * Compose button should modally present the compose screen.
 
 *Optional*
-* Optional: Compose screen is faded in while the buttons animate in.
+* Compose screen is faded in while the buttons animate in
+* Loading spinner animates on the Home tab
+* Discover bubble bobs up and down unless the first time the SearchViewController is tapped
 
 
-
-<img src="https://lh3.googleusercontent.com/-gCnX-BTn-v0/VWuZmpKgx_I/AAAAAAAADWU/OEEESfrdrWY/s512/Tumblr.gif" width="300">
+<img src="https://lh3.googleusercontent.com/-HXYWeceh1SY/VWv3kzSbJHI/AAAAAAAADWs/bSxJhS8tUPc/s512/Tumblr.gif" width="300">
 
