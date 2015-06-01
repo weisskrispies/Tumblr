@@ -6,8 +6,8 @@ Time Spent: 9 hours
 ## Stories Completed
 
 *Required*
-* Tapping on Home, Search, Account, or Trending should show the respective screen and highlight the tab bar button.
-* Compose button should modally present the compose screen.
+* Tapping on Home, Search, Account, or Trending shows the respective screen and highlight the tab bar button
+* Compose button modally presents the compose screen
 
 *Optional*
 * Compose screen is faded in while the buttons animate in
